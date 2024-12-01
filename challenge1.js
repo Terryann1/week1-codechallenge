@@ -7,9 +7,11 @@ const rl=readline.createInterface(
         output:process.stdout,
     }
 )
+
 //Declaring a function
 function studentmarks(marks){
-// if else statements
+
+// if...else statements
  if(marks<0 || marks>=100){
     return "invalid input"
  }
@@ -32,6 +34,7 @@ function studentmarks(marks){
     }
 
 }
+
 //prompting input from the user
 rl.question("Enter the student's marks(0-100):",(input)=>{const marks=parseInt(input);
     if(isNaN(marks)){console.log("Invalid input. Please enter a valid number.");}

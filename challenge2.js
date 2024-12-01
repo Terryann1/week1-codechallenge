@@ -1,28 +1,42 @@
+// creates interface that allows to read input from the console and writes output on the console
 
-function getStudentGrade() {
-  let mark;
-
-  do {
-    mark = parseInt(prompt("Enter the student's mark (0-100):"));
-
-    if (isNaN(mark) || mark < 0 || mark > 100) {
-      alert("Invalid input. Please enter a number between 0 and 100.");
+const readline=require("readline");
+const rl=readline.createInterface(
+    {
+        input: process.stdin,
+        output:process.stdout,
     }
-  } while (isNaN(mark) || mark < 0 || mark > 100);
+)
+//Declaring a function
 
-  let grade;
+function checkSpeed(speed){
+  const speedKilometres=70;
+  const speedLimit=5;
+  const maxPoints=12;
 
-  if (mark > 79) {
-    grade = 'A';
-  } else if (mark >= 60) {
-    grade = 'B';
-  } else if (mark >= 49) {
-    grade = 'C';
-  } else if (mark >= 40) {
-    grade = 'D';
-  } else {
-    grade = 'E';
+// if...else statement
+
+  if(speed<=speedKilometres){
+    console.log("OK");
   }
-
-  console.log(grade);
+  else {
+    const demeritPoints = Math.floor((speed - speedKilometres)/speedLimit);   
+    if (demeritPoints > maxPoints) {
+      console.log("License suspended");
+    } else {
+      console.log("Points:", demeritPoints);
+  }
 }
+}
+ 
+  //prompting input
+  
+ rl.question("Enter speed limit:", (input) => {
+  const speed = parseInt(input);
+  if (isNaN(speed)) {
+    console.log('Please enter a valid number for the speed.');
+  } else {
+    checkSpeed(speed);
+  }
+ rl.close();
+ });
